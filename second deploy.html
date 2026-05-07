@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Claudia Mae | GatesTown Digital Co.</title>
+
+<!-- GOOGLE FONT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#000;
+  color:white;
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+  width:10px;
+}
+
+::-webkit-scrollbar-track{
+  background:#050505;
+}
+
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(#39ff14,#ff1493);
+  border-radius:20px;
+}
+
+/* BACKGROUND */
+
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  overflow:hidden;
+  background:
+  radial-gradient(circle at top left, rgba(57,255,20,.12), transparent 30%),
+  radial-gradient(circle at bottom right, rgba(255,20,147,.12), transparent 30%),
+  #000;
+}
+
+.grid{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background-image:
+  linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size:40px 40px;
+  mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), transparent);
+}
+
+/* LAYOUT */
+
+section{
+  min-height:100vh;
+  padding:80px 7%;
+  display:flex;
+  align-items:center;
+}
+
+.hero{
+  justify-content:space-between;
+  gap:90px;
+  flex-wrap:wrap;
+}
+
+/* LEFT */
+
+.hero-left{
+  flex:1;
+  min-width:320px;
+  max-width:680px;
+}
+
+.tag{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 22px;
+  border-radius:999px;
+  background:rgba(57,255,20,.08);
+  border:1px solid rgba(57,255,20,.35);
+  color:#8dff78;
+  font-size:.85rem;
+  letter-spacing:1.5px;
+  margin-bottom:30px;
+  backdrop-filter:blur(12px);
+}
+
+.dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#39ff14;
+  box-shadow:0 0 12px #39ff14;
+}
+
+/* TITLE */
+
+h1{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(2.8rem,6vw,5rem);
+  line-height:.9;
+  font-weight:800;
+  letter-spacing:-3px;
+  margin-bottom:24px;
+}
+
+.pink{
+  color:#ff1493;
+}
+
+.green{
+  color:#39ff14;
+}
+
+/* DESCRIPTION */
+
+.hero-text{
+  color:#c7c7c7;
+  font-size:1.05rem;
+  line-height:1.9;
+  margin-bottom:40px;
+  max-width:620px;
+}
+
+/* BUTTONS */
+
+.buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+}
+
+.btn{
+  padding:16px 28px;
+  border-radius:18px;
+  text-decoration:none;
+  font-weight:600;
+  transition:.3s ease;
+}
+
+.btn-primary{
+  background:linear-gradient(135deg,#39ff14,#ff1493);
+  color:black;
+}
+
+.btn-secondary{
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.04);
+  color:white;
+  backdrop-filter:blur(10px);
+}
+
+.btn:hover{
+  transform:translateY(-4px);
+}
+
+/* RIGHT CARD */
+
+.hero-right{
+  flex:1;
+  min-width:320px;
+  display:flex;
+  justify-content:center;
+}
+
+.card{
+  width:100%;
+  max-width:430px;
+  padding:38px;
+  border-radius:32px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(20px);
+  position:relative;
+  overflow:hidden;
+  box-shadow:
+  0 0 40px rgba(0,0,0,.5),
+  0 0 80px rgba(57,255,20,.05);
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+  linear-gradient(
+  145deg,
+  rgba(57,255,20,.08),
+  transparent,
+  rgba(255,20,147,.08)
+  );
+  pointer-events:none;
+}
+
+.avatar{
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#39ff14,#ff1493);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Syne',sans-serif;
+  font-size:3rem;
+  font-weight:800;
+  color:black;
+  margin-bottom:28px;
+  box-shadow:
+  0 0 25px rgba(57,255,20,.4),
+  0 0 45px rgba(255,20,147,.25);
+}
+
+.card h2{
+  font-size:1.7rem;
+  margin-bottom:12px;
+}
+
+.card p{
+  color:#c5c5c5;
+  line-height:1.8;
+  margin-bottom:30px;
+}
+
+/* STATS */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.stat{
+  padding:20px;
+  border-radius:20px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.06);
+}
+
+.stat-number{
+  font-size:1.4rem;
+  font-weight:700;
+  color:#39ff14;
+  margin-bottom:8px;
+}
+
+.stat-label{
+  color:#c9c9c9;
+  line-height:1.5;
+  font-size:.95rem;
+}
+
+/* SECOND SECTION */
+
+.about{
+  flex-direction:column;
+  justify-content:center;
+  text-align:center;
+}
+
+.section-title{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(2.5rem,5vw,4.5rem);
+  margin-bottom:22px;
+  line-height:1;
+}
+
+.about-text{
+  max-width:850px;
+  color:#c6c6c6;
+  line-height:2;
+  font-size:1.05rem;
+  margin-bottom:60px;
+}
+
+/* CARDS */
+
+.link-grid{
+  width:100%;
+  max-width:1100px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+}
+
+.link-card{
+  padding:34px;
+  border-radius:28px;
+  text-decoration:none;
+  color:white;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  transition:.35s ease;
+  position:relative;
+  overflow:hidden;
+  text-align:left;
+}
+
+.link-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+  linear-gradient(
+  145deg,
+  rgba(57,255,20,.08),
+  transparent,
+  rgba(255,20,147,.08)
+  );
+  opacity:0;
+  transition:.35s ease;
+}
+
+.link-card:hover::before{
+  opacity:1;
+}
+
+.link-card:hover{
+  transform:translateY(-8px);
+  border-color:#39ff14;
+}
+
+.link-title{
+  font-size:1.3rem;
+  font-weight:700;
+  margin-bottom:14px;
+}
+
+.link-desc{
+  color:#c7c7c7;
+  line-height:1.8;
+}
+
+/* FOOTER */
+
+footer{
+  padding:30px;
+  text-align:center;
+  color:#767676;
+  font-size:.95rem;
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+
+  section{
+    padding:70px 7%;
+  }
+
+  .hero{
+    flex-direction:column;
+    justify-content:center;
+    gap:60px;
+  }
+
+  h1{
+    font-size:3.3rem;
+  }
+
+  .card{
+    max-width:100%;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .buttons{
+    width:100%;
+  }
+
+  .btn{
+    flex:1;
+    text-align:center;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="grid"></div>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="hero-left">
+
+    <div class="tag">
+      <div class="dot"></div>
+      GATES TOWN DIGITAL CO.
+    </div>
+
+    <h1>
+      CLAUDIA <span class="pink">MAE</span><br>
+      MAKING <span class="green">AI</span><br>
+      SIMPLE.
+    </h1>
+
+    <p class="hero-text">
+      I help women 40+ and beginner entrepreneurs confidently use AI to create digital products, build online income streams, and stop feeling overwhelmed by tech.
+    </p>
+
+    <div class="buttons">
+
+      <a href="https://gatestowndigitalco.com" class="btn btn-primary" target="_blank">
+        Visit Website
+      </a>
+
+      <a href="https://beacons.ai" class="btn btn-secondary" target="_blank">
+        Beacons
+      </a>
+
+      <a href="https://www.tiktok.com" class="btn btn-secondary" target="_blank">
+        TikTok
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- RIGHT -->
+
+  <div class="hero-right">
+
+    <div class="card">
+
+      <div class="avatar">
+        CM
+      </div>
+
+      <h2>
+        Creator • Educator • Builder
+      </h2>
+
+      <p>
+        Founder of GatesTown Digital Co. helping beginners simplify AI through prompts, Canva templates, digital products, and real-world guidance that actually makes sense.
+      </p>
+
+      <div class="stats">
+
+        <div class="stat">
+          <div class="stat-number">AI</div>
+          <div class="stat-label">
+            Prompt Education & AI Training
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-number">40+</div>
+          <div class="stat-label">
+            Beginner Friendly Learning
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-number">Canva</div>
+          <div class="stat-label">
+            Templates & Digital Products
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-number">Live</div>
+          <div class="stat-label">
+            Community & Coaching Content
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section class="about">
+
+  <h2 class="section-title">
+    Helping Beginners Feel Confident With AI
+  </h2>
+
+  <p class="about-text">
+    GatesTown Digital Co. was built to remove the fear, confusion, and overwhelm around AI. Through practical teaching, creative tools, and real guidance, Claudia Mae helps everyday entrepreneurs stop overthinking and finally start creating.
+  </p>
+
+  <div class="link-grid">
+
+    <a href="https://gatestowndigitalco.com" class="link-card" target="_blank">
+
+      <div class="link-title">
+        Website
+      </div>
+
+      <div class="link-desc">
+        Explore digital products, AI resources, beginner guides, templates, and creator tools.
+      </div>
+
+    </a>
+
+    <a href="https://beacons.ai" class="link-card" target="_blank">
+
+      <div class="link-title">
+        Beacons
+      </div>
+
+      <div class="link-desc">
+        Access your favorite links, classes, generators, products, and content in one place.
+      </div>
+
+    </a>
+
+    <a href="https://www.tiktok.com" class="link-card" target="_blank">
+
+      <div class="link-title">
+        TikTok
+      </div>
+
+      <div class="link-desc">
+        Follow for AI tips, beginner tutorials, digital product inspiration, and mindset motivation.
+      </div>
+
+    </a>
+
+  </div>
+
+</section>
+
+<footer>
+  © 2026 GatesTown Digital Co. • Making AI Make Sense
+</footer>
+
+</body>
+</html>
